@@ -20,7 +20,7 @@ TEMP_DIRECTORY = "/temp/"
 
 VM_LIST = remote_command('virsh -c qemu:///system?authfile=/etc/ovirt-hosted-engine/virsh_auth.conf list --name').split("\n")
 for VM in VM_LIST:
-    if VM != "" and VM != "HostedEngine" and VM=="kafka":
+    if VM != "" and VM != "HostedEngine":
         current_timestamp = datetime.now().strftime("%Y-%j.%H%M%S")
         path_to_backup = DIRECTORY + VM + "/" + current_timestamp + "/"
 
