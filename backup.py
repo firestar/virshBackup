@@ -57,7 +57,6 @@ for VM in VM_LIST:
         print disks
         print ""
         
-        
         driver_string = []
         for disk in disks:
             driver_string.append('--diskspec '+disk['dev']+',driver=qcow2,file='+TEMP_DIRECTORY+VM+'-'+disk['dev']+'.cow')
@@ -82,8 +81,8 @@ for VM in VM_LIST:
             else:
                 print result_of_pivot
                 
-         # Transfer all backed up base images to backup directory
-         for disk in disks:
+        # Transfer all backed up base images to backup directory
+        for disk in disks:
             print "Downloading "+VM+'-'+disk['dev']+'-base.cow'
             print local_command('scp '+HOST+':'+TEMP_DIRECTORY+VM+'-'+disk['dev']+'-base.cow '+path_to_backup+VM+'-'+disk['dev']+'.cow')
             print remote_command('rm -f '+TEMP_DIRECTORY+VM+'-'+disk['dev']+'-base.cow')
